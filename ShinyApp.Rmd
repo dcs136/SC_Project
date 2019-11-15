@@ -1,0 +1,10 @@
+---
+title: "Shiny App"
+output: html_notebook
+---
+
+
+```{r}
+plot(cars)
+```
+
