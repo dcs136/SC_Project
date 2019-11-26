@@ -7,18 +7,6 @@ library(stringr)
 library(tidyr)
 
 
-functions <- 
-  data.frame(Functions = c("log(x) + exp(-x)",
-                            "cos(x) * x"))
-
-
-
-
-ftn <- function(x) 
-  return(cos(x) * 2)
-
-
-
 fixedpoint <- function (ftn, x0, tol = 1e-09, max.iter = 100) 
 {
   xold <- x0
@@ -32,20 +20,13 @@ fixedpoint <- function (ftn, x0, tol = 1e-09, max.iter = 100)
   }
   #cat("At iteration", iter, "value of x is:", xnew, "\n")
   if (abs(xnew - xold) > tol) {
-    cat("Algorithm failed to converge\n")
-    return(NULL)
+    return(cat("Failed"))
   }
   else {
     #cat("Algorithm converged\n")
-    return(c(xnew, iter))
+    return(c(" " = xnew, " " =iter))
   }
 }
-
-
-fixedpoint(ftn, 1, tol = 1e-9, max.iter = 100)[1]
-
-
-fixedpoint(ftn, 1, tol = 1e-9, max.iter = 100)[2]
 
 
 bisection <- function (ftn, x.l, x.r, tol = 1e-09) 
@@ -85,8 +66,67 @@ bisection <- function (ftn, x.l, x.r, tol = 1e-09)
     #cat("at iteration", n, "the root lies between", x.l, 
      #   "and", x.r, "\n")
   }
-  return(c(n, (x.l + x.r)/2))
+  return(c(" " =n, " " =(x.l + x.r)/2))
 }
 
 
+secant <- function(ftn, x0, x1, tol = 1e-9, max.iter = 100) {
+  # secant algorithm for solving ftn(x) == 0
+  # we assume that ftn is a function of a single variable that returns
+  # the function value
+  #
+  # x0 and x1 are two initial guesses at the root
+  # the algorithm terminates when the function value is within distance
+  # tol of 0, or the number of iterations exceeds max.iter
+  
+  # initialise
+  f0 <- ftn(x0)
+  f1 <- ftn(x1)
+  iter <-  0
+  
+  # continue iterating until stopping conditions are met
+  while ((abs(f1) > tol) && (iter < max.iter)) {
+    if (f0 == f1) {
+    #  cat("Algorithm failed with f0 == f1\n")
+      return(NULL)
+    }
+    x2 <- x1 - f1*(x1 - x0)/(f1 - f0)
+    x0 <- x1
+    f0 <- f1
+    x1 <- x2
+    f1 <- ftn(x1)
+    iter <-  iter + 1
+   # cat("At iteration", iter, "approximation is:", x1, "\n")
+  }
+  
+  # output depends on success of algorithm
+  if (abs(f1) > tol) {
+    cat("Failed\n")
+    return(NULL)
+  } else {
+   # cat("Algorithm converged\n")
+    return(c(" " = x1, " " = iter))
+  }
+}
+
+newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100) 
+{
+  x <- x0
+  fx <- ftn(x)
+  iter <- 0
+  while ((abs(fx[1]) > tol) && (iter < max.iter)) {
+    x <- x - fx[1]/fx[2]
+    fx <- ftn(x)
+    iter <- iter + 1
+    cat("At iteration", iter, "value of x is:", x, "\n")
+  }
+  if (abs(fx[1]) > tol) {
+    #cat("Algorithm failed to converge\n")
+    return(NULL)
+  }
+  else {
+    #cat("Algorithm converged\n")
+    return(c(" " = x, " " = iter))
+  }
+}
 

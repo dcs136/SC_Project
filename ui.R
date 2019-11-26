@@ -4,16 +4,16 @@ dashboardPage(skin = "purple",
     sidebarMenu(
       menuItem("Root Finding", tabName = "root", icon = icon("bar-chart-o"))
     ),
-    selectInput(inputId = 'equation',
-                selectize = FALSE,
-                size = 1,
-                label = 'Select a Function',
-                choices = unique(functions$Functions),
-                selected = c('log(x) + exp(-x)')),
-    uiOutput('Area_ui_b'),
+    # selectInput(inputId = 'equation',
+    #             selectize = FALSE,
+    #             size = 1,
+    #             label = 'Select a Function',
+    #             choices = unique(functions$Functions),
+    #             selected = c('log(x) + exp(-x)')),
+    # uiOutput('Area_ui_b'),
+    textInput("text", "Enter Your Function: "),
     numericInput("num1", "Left Limit", value = 0, min = -100, max = 100, step = 0.1),
     numericInput("num2", "Right Limit", value = 0, min = -100, max = 100, step = 0.1),
-   textInput("text", "Text Input: "),
    actionButton("calculate", "Find Root")
 ),
   dashboardBody(
@@ -21,18 +21,36 @@ dashboardPage(skin = "purple",
       tabItem(tabName = "root")),
     fluidRow(
       box(
-        title = "Curve", background = "blue", solidHeader = TRUE,
-        collapsible = TRUE,
-        plotOutput('curve')),
+        title = "Root", align = "center", class = "text-center", width = 2, height = 100, style = "font-size:30px", status = "success", solidHeader = TRUE,
+        htmlOutput('conversionB')),
       box(
-        title = "FixedPoint - Iterations", width = 4, background = "light-blue",
-        htmlOutput('iteration')),
-      box(
-        title = "Root", width = 4, background = "light-blue",
-        htmlOutput('convertion')
-      
+        title = "FixedPoint", class = "text-center", width = 2, height = 100, style = "font-size:30px",status = "primary", solidHeader = TRUE,
+        htmlOutput('iterationF')
       ),  
-      #htmlOutput('iteration')
+      box(
+        title = "Bisection", class = "text-center", width = 2, height = 100, style = "font-size:30px", status = "primary", solidHeader = TRUE, fill = T,
+        htmlOutput('iterationB')
+        ),
+    box(
+      title = "Secant", class = "text-center", width = 2, height = 100, style = "font-size:30px", status = "primary", solidHeader = TRUE, fill = T,
+      htmlOutput('iterationS')
+        )
+      ),
+      fluidRow(
+      box(
+        side = "left",
+        title = "Curve", status = "primary", solidHeader = TRUE,
+        collapsible = TRUE,
+        plotOutput('curve')
+        ),
+      
+      # fluidRow(
+      #   infoBox("New Orders", 10 * 2, icon = icon("credit-card"), fill = TRUE),
+      #   infoBoxOutput("progressBox2"),
+      #   infoBoxOutput("approvalBox2")
+      # ),
     )
   )
+
 )
+

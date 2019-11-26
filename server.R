@@ -28,11 +28,26 @@ shinyServer(function(input, output){
         # abline(v=0)
 
       })
-      output$iteration <- renderPrint(
-        bisection(ftn, x.l = input$num1, x.r = input$num2)[1])
-      output$convertion <- renderPrint(
+      output$conversionB <- renderPrint(
         bisection(ftn, x.l = input$num1, x.r = input$num2)[2])
-    
+      
+      output$iterationF <- renderPrint(
+        fixedpoint(ftn, input$num1)[2])
+      
+      output$iterationB <- renderPrint(
+        bisection(ftn, x.l = input$num1, x.r = input$num2)[1])
+      # 
+      # output$convertionB <- renderPrint(
+      #   fixedpoint(ftn, input$num1)[1])
+      
+      # output$convertionS <- renderPrint(
+      #   secant(ftn, x.l = input$num1, x.r = input$num2)[1])
+      
+      output$iterationS <- renderPrint(
+        secant(ftn, input$num1, input$num2)[2])
+      
+     
+      
     # if (input$equation ==  "log(x) + exp(-x)") { 
     #   ftn <- function(x) 
     #     return(log(x)^3 + exp(-x)^2)
