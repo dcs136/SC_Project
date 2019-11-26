@@ -12,8 +12,8 @@ dashboardPage(skin = "purple",
     #             selected = c('log(x) + exp(-x)')),
     # uiOutput('Area_ui_b'),
     textInput("text", "Enter Your Function: "),
-    numericInput("num1", "Left Limit", value = 0, min = -100, max = 100, step = 0.1),
-    numericInput("num2", "Right Limit", value = 0, min = -100, max = 100, step = 0.1),
+    numericInput("num1", "First Point", value = 0, min = -100, max = 100, step = 0.1),
+    numericInput("num2", "Second Point", value = 0, min = -100, max = 100, step = 0.1),
    actionButton("calculate", "Find Root")
 ),
   dashboardBody(
@@ -22,7 +22,7 @@ dashboardPage(skin = "purple",
     fluidRow(
       box(
         title = "Root", align = "center", class = "text-center", width = 2, height = 100, style = "font-size:30px", status = "success", solidHeader = TRUE,
-        htmlOutput('conversionB')),
+        htmlOutput('conversionS')),
       box(
         title = "FixedPoint", class = "text-center", width = 2, height = 100, style = "font-size:30px",status = "primary", solidHeader = TRUE,
         htmlOutput('iterationF')
@@ -39,8 +39,8 @@ dashboardPage(skin = "purple",
       fluidRow(
       box(
         side = "left",
-        title = "Curve", status = "primary", solidHeader = TRUE,
-        collapsible = TRUE,
+        title = "Curve", status = "primary", solidHeader = TRUE, width = 8,
+        #collapsible = TRUE,
         plotOutput('curve')
         ),
       

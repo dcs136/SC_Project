@@ -12,14 +12,19 @@ shinyServer(function(input, output){
     # Ifelse statements are used to link the functions.
     #input$num1
       output$curve <-  renderPlot({
+        
+        curve(ftn, -pi, pi, col = 'blue', main = paste("Function: ", input$text))
+        abline(h = 0, v = secant(ftn, input$num1, input$num2),lty = 3)
+        
+        
         #renderText(bisection(eval(input$text), 0, 2.5)[2])
-        ggplot(data.frame(x = c(-5, 5)), aes(x = x)) +
-          stat_function(fun = ftn)+
-          scale_x_continuous(name = "X-axis")+
-          scale_y_continuous(name = "Y-axis")+
-          ggtitle("Function")+
-          #  ccolour = "#4271AE") +
-          theme_bw()
+        # ggplot(data.frame(x = c(-5, 5)), aes(x = x)) +
+        #   stat_function(fun = ftn)+
+        #   scale_x_continuous(name = "X-axis")+
+        #   scale_y_continuous(name = "Y-axis")+
+        #   ggtitle("Function")+
+        #   #  ccolour = "#4271AE") +
+        #   theme_bw()
 
 
 
@@ -28,8 +33,8 @@ shinyServer(function(input, output){
         # abline(v=0)
 
       })
-      output$conversionB <- renderPrint(
-        bisection(ftn, x.l = input$num1, x.r = input$num2)[2])
+      output$conversionS <- renderPrint(
+        secant(ftn, input$num1, input$num2)[1])
       
       output$iterationF <- renderPrint(
         fixedpoint(ftn, input$num1)[2])

@@ -130,3 +130,22 @@ newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100)
   }
 }
 
+
+# library(plotly)
+# today <- Sys.Date()
+# tm <- seq(0, 600, by = 10)
+# x <- seq(-5,5,1)
+# 
+# y <- rnorm(length(x))
+# 
+# 
+# plot_ly(x = ~x, y = ~ftn, mode = 'lines', text = ("days from today"))
+# 
+# # 
+# # curve(ftn, -pi, pi, col = 'blue', main = "Teste")
+# # abline(h = 0, v = secant(ftn, -1, 2),lty = 3)
+# 
+# secant(ftn, 1, 4)
+
+# Create a shareable link to your chart
+# Set up API credentials: https://plot.ly/r/getting-started
