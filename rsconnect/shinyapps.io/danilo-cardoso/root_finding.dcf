@@ -1,0 +1,12 @@
+name: root_finding
+title: root_finding
+username:
+account: danilo-cardoso
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1478711
+bundleId: 2617513
+url: https://danilo-cardoso.shinyapps.io/Root_Finding/
+when: 1574728952.19483
+asMultiple: FALSE
+asStatic: FALSE

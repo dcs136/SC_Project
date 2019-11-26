@@ -11,7 +11,8 @@ dashboardPage(skin = "purple",
                 choices = unique(functions$Functions),
                 selected = c('log(x) + exp(-x)')),
     uiOutput('Area_ui_b'),
-    numericInput("num1", "First Initial Point", value = 0, min = -100, max = 100, step = 0.1),
+    numericInput("num1", "Left Limit", value = 0, min = -100, max = 100, step = 0.1),
+    numericInput("num2", "Right Limit", value = 0, min = -100, max = 100, step = 0.1),
    textInput("text", "Text Input: "),
    actionButton("calculate", "Find Root")
 ),
@@ -24,8 +25,12 @@ dashboardPage(skin = "purple",
         collapsible = TRUE,
         plotOutput('curve')),
       box(
-        title = "Root Point", width = 4, background = "light-blue",
-        htmlOutput('iteration')
+        title = "FixedPoint - Iterations", width = 4, background = "light-blue",
+        htmlOutput('iteration')),
+      box(
+        title = "Root", width = 4, background = "light-blue",
+        htmlOutput('convertion')
+      
       ),  
       #htmlOutput('iteration')
     )
