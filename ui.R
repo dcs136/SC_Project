@@ -1,4 +1,4 @@
-dashboardPage(skin = "purple",
+dashboardPage(skin = "blue",
   dashboardHeader(title = "Root Finding App"),
   dashboardSidebar(
     sidebarMenu(
@@ -34,12 +34,16 @@ dashboardPage(skin = "purple",
     box(
       title = "Secant", class = "text-center", width = 2, height = 100, style = "font-size:30px", status = "primary", solidHeader = TRUE, fill = T,
       htmlOutput('iterationS')
-        )
+        ),
+    box(
+      title = "Newton", class = "text-center", width = 2, height = 100, style = "font-size:30px", status = "primary", solidHeader = TRUE, fill = T,
+      htmlOutput('iterationN')
+    )
       ),
       fluidRow(
       box(
         side = "left",
-        title = "Curve", status = "primary", solidHeader = TRUE, width = 8,
+        title = "Curve", status = "primary", solidHeader = TRUE, width = 10,
         #collapsible = TRUE,
         plotOutput('curve')
         ),

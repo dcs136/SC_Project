@@ -118,7 +118,7 @@ newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100)
     x <- x - fx[1]/fx[2]
     fx <- ftn(x)
     iter <- iter + 1
-    cat("At iteration", iter, "value of x is:", x, "\n")
+    #at("At iteration", iter, "value of x is:", x, "\n")
   }
   if (abs(fx[1]) > tol) {
     #cat("Algorithm failed to converge\n")
@@ -131,21 +131,17 @@ newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100)
 }
 
 
-# library(plotly)
-# today <- Sys.Date()
-# tm <- seq(0, 600, by = 10)
-# x <- seq(-5,5,1)
-# 
-# y <- rnorm(length(x))
-# 
-# 
-# plot_ly(x = ~x, y = ~ftn, mode = 'lines', text = ("days from today"))
-# 
-# # 
-# # curve(ftn, -pi, pi, col = 'blue', main = "Teste")
-# # abline(h = 0, v = secant(ftn, -1, 2),lty = 3)
-# 
-# secant(ftn, 1, 4)
 
-# Create a shareable link to your chart
-# Set up API credentials: https://plot.ly/r/getting-started
+t <- cos(2)
+
+
+ftn2 <- 
+  eval(parse(text = paste(
+    
+    'f <- function(x) { 
+        
+        return(c(',t,'), eval(D(expression(',t,'), "x")))
+        
+        }', sep='')))
+
+
