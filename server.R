@@ -23,15 +23,13 @@ shinyServer(function(input, output){
       # plot the curve
       output$curve <-  renderPlot({
         
-        curve(ftn, -pi, pi, col = 'red', main = paste("Function: ", input$text))
+        curve(ftn, -pi, pi, col = 'red', main = paste("Equation: ", input$text))
         abline(h = 0, v = secant(ftn, input$num1, input$num2),lty = 3)
         
       })
       
       #plot the barplot
       output$barplot <-  renderPlot({
-        
-
 
         barplot(c(
                  #fixedpoint(ftn, input$num1)[2],

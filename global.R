@@ -140,9 +140,4 @@ newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100)
   }
 }
 
-f <- function(x) {
-  cos(x)
-}
-
-
 
