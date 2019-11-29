@@ -9,7 +9,7 @@ library(stringr)
 library(tidyr)
 
 # x lable for the barplot
-barplot_x <- c("Bisection", "Secant","Newton")
+barplot_x <- c("Uniroot","Bisection", "Secant","Newton")
 
 
 # fixedPoint Method edited 
@@ -140,7 +140,9 @@ newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100)
   }
 }
 
-
+f <- function(x) {
+  cos(x)
+}
 
 
 

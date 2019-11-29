@@ -5,8 +5,8 @@ account: danilo-cardoso
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1478711
-bundleId: 2620204
+bundleId: 2626497
 url: https://danilo-cardoso.shinyapps.io/Root_Finding/
-when: 1574802101.61364
+when: 1575037139.71939
 asMultiple: FALSE
 asStatic: FALSE

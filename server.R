@@ -35,13 +35,16 @@ shinyServer(function(input, output){
 
         barplot(c(
                  #fixedpoint(ftn, input$num1)[2],
+                 uniroot(ftn,c(input$num1, input$num2))$iter,
                  bisection(ftn, x.l = input$num1, x.r = input$num2)[2],
                  secant(ftn, input$num1, input$num2)[1],
                  newtonrapshon(ftn2, 2, 1e-9, max.iter = 100)[2]),
-                               names.arg = barplot_x,
-               xlab = "Method",
+                
+                
+               names.arg = barplot_x,
+               #xlab = "Method",
                ylab = "Number of Iteration",
-               col = "#249654"
+               col = "#2195e0"
               )
         
       })
