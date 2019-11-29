@@ -1,3 +1,5 @@
+
+# run packages
 options(stringsAsFactors = FALSE)
 library(shiny)
 library(shinydashboard)
@@ -6,7 +8,11 @@ library(ggplot2)
 library(stringr)
 library(tidyr)
 
+# x lable for the barplot
+barplot_x <- c("Bisection", "Secant","Newton")
 
+
+# fixedPoint Method edited 
 fixedpoint <- function (ftn, x0, tol = 1e-09, max.iter = 100) 
 {
   xold <- x0
@@ -29,6 +35,7 @@ fixedpoint <- function (ftn, x0, tol = 1e-09, max.iter = 100)
 }
 
 
+# Bisection Method edited
 bisection <- function (ftn, x.l, x.r, tol = 1e-09) 
 {
   if (x.l >= x.r) {
@@ -69,6 +76,7 @@ bisection <- function (ftn, x.l, x.r, tol = 1e-09)
   return(c(" " =n, " " =(x.l + x.r)/2))
 }
 
+# Secant Method edited
 
 secant <- function(ftn, x0, x1, tol = 1e-9, max.iter = 100) {
   # secant algorithm for solving ftn(x) == 0
@@ -109,6 +117,8 @@ secant <- function(ftn, x0, x1, tol = 1e-9, max.iter = 100) {
   }
 }
 
+# Newtonrapshon Method edited
+
 newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100) 
 {
   x <- x0
@@ -132,16 +142,5 @@ newtonrapshon <- function (ftn, x0, tol = 1e-09, max.iter = 100)
 
 
 
-t <- cos(2)
-
-
-ftn2 <- 
-  eval(parse(text = paste(
-    
-    'f <- function(x) { 
-        
-        return(c(',t,'), eval(D(expression(',t,'), "x")))
-        
-        }', sep='')))
 
 
